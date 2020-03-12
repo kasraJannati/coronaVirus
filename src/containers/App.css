@@ -1,0 +1,34 @@
+body{
+    position: relative;
+    columns: #000000;
+}
+/***** header *****/
+header{
+    position: relative;
+    background: #64b9d2;
+    height: 50px;
+    line-height: 50px;
+    color: #ffffff;
+    text-align: center;
+}
+/*** navigation ***/
+.active-nav{
+    font-weight: bold;
+}
+nav{
+    position: relative;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    background: #e4e4e4;
+    color: #ffffff;
+    text-align: left;
+}
+nav a:link,nav a:visited{
+    text-decoration: none;
+    color:#000000;
+    margin:5px
+}
+nav a:hover,nav a:focus{
+    text-decoration: none;
+}
