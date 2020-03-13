@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Cases.module.css'
+import Barchart from '../Barchart/Barchart';
 
 
 function Cases() {
@@ -8,6 +9,8 @@ function Cases() {
 
   
     const [casesByCounry, setCasesByCounry] = useState([]);
+
+    // const [case5, setCase5] = useState([]);
         
 
     useEffect(() => {
@@ -21,37 +24,48 @@ function Cases() {
       })
       .then(response => response.json()) // Getting the actual response data
       .then(data => {
-          
+
             setCasesByCounry(data.countries_stat)
+
+            // let countryFive = [];
+            // for(let i=0; i<5; i++){
+            //   countryFive.push(data.countries_stat[i]);
+            // }
+            // setCase5(countryFive);
+         
+            
             // country_name 
             // cases    
             // deaths
             // region
             // total_recovered
             // new_deaths
-            // new_cases
+            // new_cases  
       })
       .catch(err => {
         console.log('error: ', err);
       });
   
     }, []);
-  
+
+
+
 
 
   return (
     <div id="Cases" className={styles.Cases}>
        
+       <Barchart case={casesByCounry}></Barchart>
          
     
-             <ul>
+             {/* <ul>
          {
          casesByCounry.map((cases) =>
           <li key={cases.country_name}>
                 {cases.country_name}
           </li>
           )}
-         </ul>
+         </ul> */}
 
     </div>
   );

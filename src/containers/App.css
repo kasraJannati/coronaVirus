@@ -6,7 +6,7 @@ body{
 header{
     position: relative;
     background: #64b9d2;
-    height: 50px;
+    padding: 10px;
     line-height: 50px;
     color: #ffffff;
     text-align: center;
@@ -31,4 +31,8 @@ nav a:link,nav a:visited{
 }
 nav a:hover,nav a:focus{
     text-decoration: none;
+}
+/*************/
+.canvasjs-chart-credit{
+    display:none !important;
 }
