@@ -1,12 +1,10 @@
-import React,{useState} from 'react';
+import React from 'react';
 import styles from './Barchart.module.css'
 import CanvasJSReact from '../../assets/js/canvasjs.react';
 
 //var CanvasJSReact = require('./canvasjs.react');
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
-
-
 
 function Barchart(casesByCounry) {
 
@@ -26,7 +24,7 @@ function Barchart(casesByCounry) {
     }
 
     const addSymbols = (e) => {
-        let suffixes = [" T", "K", "M", "B"];
+        let suffixes = ["T", "K", "M", "B"];
         let order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
         if(order > suffixes.length - 1)
             order = suffixes.length - 1;
@@ -45,10 +43,10 @@ function Barchart(casesByCounry) {
         //     title: "countries",
         //     reversed: true,
         // },
-        // axisY: {
-        //     title: "the number of cases corona virus",
-        //     labelFormatter: addSymbols
-        // },
+        axisY: {
+            title: "the number of cases corona virus",
+            labelFormatter: addSymbols
+        },
         data: [{
             type: "bar",
             dataPoints: [
@@ -65,7 +63,7 @@ function Barchart(casesByCounry) {
 
         <div className={styles.barChart}>
 
-            <h2 className={styles.h2}>the worst countries</h2>
+            <h2 className={styles.h2}>Affected rates in countries</h2>
 
             <CanvasJSChart options = {options}
                 /* onRef = {ref => this.chart = ref} */

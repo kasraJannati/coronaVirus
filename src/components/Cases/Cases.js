@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Cases.module.css'
 import Barchart from '../Barchart/Barchart';
+import Piechart from '../Piechart/Piechart';
+import TableFn from '../TableFn/TableFn';
 
 
 function Cases() {
 
-
-
-  
-    const [casesByCounry, setCasesByCounry] = useState([]);
-
-    // const [case5, setCase5] = useState([]);
-        
+    const [casesByCounry, setCasesByCounry] = useState([]);        
 
     useEffect(() => {
   
@@ -25,15 +21,9 @@ function Cases() {
       .then(response => response.json()) // Getting the actual response data
       .then(data => {
 
-            setCasesByCounry(data.countries_stat)
-
-            // let countryFive = [];
-            // for(let i=0; i<5; i++){
-            //   countryFive.push(data.countries_stat[i]);
-            // }
-            // setCase5(countryFive);
-         
-            
+            setCasesByCounry(data.countries_stat);
+        
+        
             // country_name 
             // cases    
             // deaths
@@ -48,15 +38,14 @@ function Cases() {
   
     }, []);
 
-
-
-
-
+   
   return (
     <div id="Cases" className={styles.Cases}>
        
+       <Piechart case={casesByCounry}></Piechart>
        <Barchart case={casesByCounry}></Barchart>
-         
+
+       <TableFn case={casesByCounry}></TableFn>
     
              {/* <ul>
          {
