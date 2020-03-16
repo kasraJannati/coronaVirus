@@ -1,0 +1,15 @@
+.table{
+    position: relative;
+    width: 80% !important;
+    margin:  0 auto;
+  
+}
+
+.table thead th{
+    background: #4aa2c3;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.table th,.table td{
+    text-align: center;
+}

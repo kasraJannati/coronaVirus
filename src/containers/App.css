@@ -36,3 +36,11 @@ nav a:hover,nav a:focus{
 .canvasjs-chart-credit{
     display:none !important;
 }
+/***/
+h2{
+    color: #bdbdbd;
+    text-transform: uppercase;
+    border-bottom: 1px solid #bfbfbf;
+    width: 80%;
+    margin: 50px auto;
+}

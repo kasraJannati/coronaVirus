@@ -44,17 +44,17 @@ function Barchart(casesByCounry) {
         //     reversed: true,
         // },
         axisY: {
-            title: "the number of cases corona virus",
+            // title: "the number of cases corona virus",
             labelFormatter: addSymbols
         },
         data: [{
             type: "bar",
             dataPoints: [
-                { y:  parseInt(caseViruses[0]), label: countries[0] },
-                { y:  parseInt(caseViruses[1]), label: countries[1] },
+                { y:  parseInt(caseViruses[4]), label: countries[4] },
+                { y:  parseInt(caseViruses[3]), label: countries[3] },
                 { y:  parseInt(caseViruses[2]), label: countries[2] },
-                { y:  parseInt(caseViruses[3]), label: countries[3]},
-                { y:  parseInt(caseViruses[4]), label: countries[4] }
+                { y:  parseInt(caseViruses[1]), label: countries[1]},
+                { y:  parseInt(caseViruses[0]), label: countries[0] }
             ]
         }]
     }
@@ -64,10 +64,16 @@ function Barchart(casesByCounry) {
         <div className={styles.barChart}>
 
             <h2 className={styles.h2}>Affected rates in countries</h2>
+            <div className={styles.canvasJs}>
+
 
             <CanvasJSChart options = {options}
                 /* onRef = {ref => this.chart = ref} */
             />
+
+            </div>
+
+    
         </div>
     )
 }

@@ -3,7 +3,7 @@ import styles from './Piechart.module.css'
 import CanvasJSReact from '../../assets/js/canvasjs.react';
 
 //var CanvasJSReact = require('./canvasjs.react');
-var CanvasJS = CanvasJSReact.CanvasJS;
+// var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function Piechart(casesByCounry) {
@@ -30,16 +30,16 @@ function Piechart(casesByCounry) {
         exportEnabled: false,
         animationEnabled: true,
         title: {
-            text: "Confirmed Total Cases and Deaths, recovered"
+            // text: "Confirmed Total Cases and Deaths, recovered"
         },
         data: [{
             type: "pie",
             startAngle: 75,
-            toolTipContent: "<b>{label}</b>: {y}%",
+            toolTipContent: "<b>{label}</b>: {y}Th",
             showInLegend: "true",
             legendText: "{label}",
             indexLabelFontSize: 16,
-            indexLabel: "{label} - {y}%",
+            indexLabel: "{label} - {y}Th",
             dataPoints: [
                 { y: countCase, label: "cases" },
                 { y: countDeaths, label: "deaths" },
@@ -51,6 +51,7 @@ function Piechart(casesByCounry) {
     return(
 
         <div className={styles.barChart}>
+            <h2>Confirmed Total Cases and Deaths, recovered</h2>
             <CanvasJSChart options = {options} 
                 /* onRef = {ref => this.chart = ref} */
             />

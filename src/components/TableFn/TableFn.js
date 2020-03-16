@@ -1,95 +1,82 @@
 import React from 'react';
 import styles from './TableFn.module.css';
-
-
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 
 
 function TableFn(casesByCounry) {
 
-    console.log(casesByCounry.case)
+    const StyledTableCell = withStyles(theme => ({
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    body: {
+        fontSize: 14,
+    },
+    }))(TableCell);
 
- 
+    const StyledTableRow = withStyles(theme => ({
+    root: {
+        '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.background.default,
+        },
+    },
+    }))(TableRow);
+
+    const fullData = [];
+    function createData(country, caseNum, deaths, region, total_recovery) {
+        var person = {country:country, caseNum: caseNum, deaths:deaths, region:region, total_recovery:total_recovery};
+        fullData.push(person)
+        return { country, caseNum, deaths, region, total_recovery };
+    }
+        
     for(let i=0; i<casesByCounry.case.length; i++) {
-
-        console.log(casesByCounry.case[i][Object.keys(casesByCounry.case[i])[0]]);
-
+        createData(casesByCounry.case[i][Object.keys(casesByCounry.case[i])[0]],
+        casesByCounry.case[i][Object.keys(casesByCounry.case[i])[1]],
+        casesByCounry.case[i][Object.keys(casesByCounry.case[i])[2]],
+        casesByCounry.case[i][Object.keys(casesByCounry.case[i])[3]],
+        casesByCounry.case[i][Object.keys(casesByCounry.case[i])[4]])
     }
 
+    console.log(fullData)
 
-            const StyledTableCell = withStyles(theme => ({
-            head: {
-                backgroundColor: theme.palette.common.black,
-                color: theme.palette.common.white,
-            },
-            body: {
-                fontSize: 14,
-            },
-            }))(TableCell);
-
-            const StyledTableRow = withStyles(theme => ({
-            root: {
-                '&:nth-of-type(odd)': {
-                backgroundColor: theme.palette.background.default,
-                },
-            },
-            }))(TableRow);
-
-            function createData(name, calories, fat, carbs, protein) {
-                return { name, calories, fat, carbs, protein };
-            }
-
-            const rows = [
-                createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-                createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-                createData('Eclair', 262, 16.0, 24, 6.0),
-                createData('Cupcake', 305, 3.7, 67, 4.3),
-                createData('Gingerbread', 356, 16.0, 49, 3.9),
-            ];
-
-            const useStyles = makeStyles({
-                table: {
-                    minWidth: 700,
-                },
-            });
-
-                const classes = useStyles();
-
-            return (
-                <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="customized table">
-                    <TableHead>
-                    <TableRow>
-                        <StyledTableCell>Country</StyledTableCell>
-                        <StyledTableCell align="right">Case</StyledTableCell>
-                        <StyledTableCell align="right">deaths</StyledTableCell>
-                        <StyledTableCell align="right">region</StyledTableCell>
-                        <StyledTableCell align="right">total_recovered</StyledTableCell>
-                    </TableRow>
-                    </TableHead>
-                    <TableBody>
-                    {rows.map(row => (
-                        <StyledTableRow key={row.name}>
-                        <StyledTableCell component="th" scope="row">
-                            {row.name}
-                        </StyledTableCell>
-                        <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                        <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                        <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                        <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                        </StyledTableRow>
-                    ))}
-                    </TableBody>
-                </Table>
-                </TableContainer>
-            );
+    return (
+        <TableContainer>
+            <h2>
+                The list of countries
+            </h2>
+        <Table aria-label="customized table"  className={styles.table}>
+            <TableHead>
+            <TableRow>
+                <StyledTableCell>Country</StyledTableCell>
+                <StyledTableCell align="right">Case</StyledTableCell>
+                <StyledTableCell align="right">deaths</StyledTableCell>
+                <StyledTableCell align="right">region</StyledTableCell>
+                <StyledTableCell align="right">total_recovered</StyledTableCell>
+            </TableRow>
+            </TableHead>
+            <TableBody>
+            {fullData.map(row => (
+                <StyledTableRow key={row.Country}>
+                <StyledTableCell component="th" scope="row">
+                    {row.country}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.caseNum}</StyledTableCell>
+                <StyledTableCell align="right">{row.deaths}</StyledTableCell>
+                <StyledTableCell align="right">{row.region}</StyledTableCell>
+                <StyledTableCell align="right">{row.total_recovery}</StyledTableCell>
+                </StyledTableRow>
+            ))}
+            </TableBody>
+        </Table>
+        </TableContainer>
+    );
 }
 
 
